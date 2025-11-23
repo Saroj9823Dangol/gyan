@@ -20,6 +20,9 @@ export const metadata: Metadata = {
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SmoothScroll from "@/components/utils/SmoothScroll";
+import CustomCursor from "@/components/ui/CustomCursor";
+import PageLoader from "@/components/ui/PageLoader";
 
 export default function RootLayout({
   children,
@@ -31,6 +34,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-950 text-white`}
       >
+        <PageLoader />
+        <SmoothScroll />
+        <CustomCursor />
         <Header />
         <main className="min-h-screen pt-20">{children}</main>
         <Footer />

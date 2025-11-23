@@ -44,6 +44,21 @@ export default function Hero() {
         scrub: true,
       },
     });
+
+    // Mouse Parallax
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+      gsap.to(bg, { x: x, y: y, duration: 1, ease: "power2.out" });
+      gsap.to(text, { x: -x * 2, y: -y * 2, duration: 1, ease: "power2.out" });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   return (
